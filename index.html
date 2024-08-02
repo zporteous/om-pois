@@ -16,60 +16,86 @@
         <!-- Custom JS -->
         <script src="/js/map.js"></script>
         <!-- Styles -->
-        <link rel="stylesheet" type="text/css" href="/css/map.css" />
-        <link rel="stylesheet" type="text/css" href="/css/sidebar.css" />
+        <link rel="stylesheet" type="text/css" href="/css/main.css" />
     </head>
     <body>
-        <div id="viewDiv">
-            <div id="sidebar" >
-                <div id="sidebar-content">
-                    <h4>Overture Maps POIs</h4>
-                    <calcite-tabs>
-                        <calcite-tab-nav slot="title-group">
-                            <calcite-tab-title selected>
-                                Define Spatial Area
-                            </calcite-tab-title>
-                            <calcite-tab-title>Select Categories</calcite-tab-title>
-                            <calcite-tab-title>Send Request</calcite-tab-title>
-                        </calcite-tab-nav>
-                        <calcite-tab selected>
-                            
-                        </calcite-tab>
-                        <calcite-tab>
-                            <calcite-tree selection-mode="ancestors">
-                                <calcite-tree-item>East Coast</calcite-tree-item>
-                                <calcite-tree-item>
-                                    Midwest
-                                    <calcite-tree slot="children">
-                                        <calcite-tree-item>Great Lakes</calcite-tree-item>
-                                        <calcite-tree-item>Northwoods</calcite-tree-item>
-                                    </calcite-tree>
-                                </calcite-tree-item>
-                                <calcite-tree-item>
-                                    West Coast
-                                    <calcite-tree slot="children">
+        <div class="body-container">
+            <div>
+                <div class="sidebar">
+                    <div id="sidebar" >
+                        <div id="sidebar-content" >
+                            <h4>Overture Maps POIs</h4>
+                            <p>One stop shop for quick and easy access to POIs from OVerture Maps</p>
+                            <calcite-tabs>
+                                <calcite-tab-nav slot="title-group">
+                                    <calcite-tab-title selected>
+                                        Define Spatial Area
+                                    </calcite-tab-title>
+                                    <calcite-tab-title>Select Categories</calcite-tab-title>
+                                    <calcite-tab-title>Send Request</calcite-tab-title>
+                                </calcite-tab-nav>
+                                <calcite-tab selected>
+                                    <div class="tab-content">
+                                        <div>
+                                            <calcite-radio-button-group id="draw-or-upload" appearance="outline" layout="horizontal">
+                                            <calcite-label layout="inline">
+                                                <calcite-radio-button value="draw" checked></calcite-radio-button>Draw an AOI
+                                            </calcite-label>
+                                            <calcite-label layout="inline">
+                                                <calcite-radio-button value="upload"></calcite-radio-button>Upload Polygon Shapefile
+                                            </calcite-label>
+                                            </calcite-radio-button-group>
+                                        </div>
+                                        <div id="upload-ui">
+                                            <calcite-label> Upload a polygon shapefile
+                                              <form enctype="multipart/form-data" method="post" id="upload-shp">
+                                                <div class="field">
+                                                  <input disabled id="inFile" name="file" type="file"/>
+                                                </div>
+                                              </form>
+                                            </calcite-label>
+                                            <calcite-label id="upload-status"></calcite-label>
+                                        </div>
+                                    </div>
+                                    
+                                </calcite-tab>
+                                <calcite-tab>
+                                    <calcite-tree selection-mode="ancestors">
+                                        <calcite-tree-item>East Coast</calcite-tree-item>
                                         <calcite-tree-item>
-                                            California
+                                            Midwest
                                             <calcite-tree slot="children">
-                                                <calcite-tree-item>Bay Area</calcite-tree-item>
-                                                <calcite-tree-item>Central Valley</calcite-tree-item>
-                                                <calcite-tree-item>Inland Empire</calcite-tree-item>
-                                                <calcite-tree-item>Trinity Alps</calcite-tree-item>
+                                                <calcite-tree-item>Great Lakes</calcite-tree-item>
+                                                <calcite-tree-item>Northwoods</calcite-tree-item>
                                             </calcite-tree>
                                         </calcite-tree-item>
                                         <calcite-tree-item>
-                                            Pacific Northwest
+                                            West Coast
                                             <calcite-tree slot="children">
-                                                <calcite-tree-item>Oregon</calcite-tree-item>
                                                 <calcite-tree-item>
-                                                    Washington
+                                                    California
                                                     <calcite-tree slot="children">
-                                                        <calcite-tree-item>Coastal</calcite-tree-item>
+                                                        <calcite-tree-item>Bay Area</calcite-tree-item>
+                                                        <calcite-tree-item>Central Valley</calcite-tree-item>
+                                                        <calcite-tree-item>Inland Empire</calcite-tree-item>
+                                                        <calcite-tree-item>Trinity Alps</calcite-tree-item>
+                                                    </calcite-tree>
+                                                </calcite-tree-item>
+                                                <calcite-tree-item>
+                                                    Pacific Northwest
+                                                    <calcite-tree slot="children">
+                                                        <calcite-tree-item>Oregon</calcite-tree-item>
                                                         <calcite-tree-item>
-                                                            Inland
+                                                            Washington
                                                             <calcite-tree slot="children">
-                                                                <calcite-tree-item>Mount St. Helens</calcite-tree-item>
-                                                                <calcite-tree-item>The Enchantments</calcite-tree-item>
+                                                                <calcite-tree-item>Coastal</calcite-tree-item>
+                                                                <calcite-tree-item>
+                                                                    Inland
+                                                                    <calcite-tree slot="children">
+                                                                        <calcite-tree-item>Mount St. Helens</calcite-tree-item>
+                                                                        <calcite-tree-item>The Enchantments</calcite-tree-item>
+                                                                    </calcite-tree>
+                                                                </calcite-tree-item>
                                                             </calcite-tree>
                                                         </calcite-tree-item>
                                                     </calcite-tree>
@@ -77,14 +103,17 @@
                                             </calcite-tree>
                                         </calcite-tree-item>
                                     </calcite-tree>
-                                </calcite-tree-item>
-                            </calcite-tree>
-                        </calcite-tab>
-                        <calcite-tab>
-                            
-                        </calcite-tab>
-                    </calcite-tabs>
+                                </calcite-tab>
+                                <calcite-tab>
+                                    
+                                </calcite-tab>
+                            </calcite-tabs>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div>
+                <div id="viewDiv"></div>
             </div>
         </div>
     </body>

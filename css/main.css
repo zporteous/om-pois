@@ -1,0 +1,46 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#viewDiv {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  grid-area:"body";
+}
+
+.app-container {
+
+  height: 100%;
+  width: 100%;
+}
+
+.body-container {
+  display:grid;
+  grid-template-columns: 30% 70%;
+  height: 100%; 
+  width: 100%;
+}
+
+#sidebar {
+  display:grid;
+  grid-template-rows: auto;
+  grid-gap:1rem;
+  word-wrap: break-word;
+}
+
+ .footer {
+  grid-area: 'footer';
+  background-color: rgb(247, 222, 195);
+ } 
+
+.disabled {
+  opacity:.4;
+}
+  
+
