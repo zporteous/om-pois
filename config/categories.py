@@ -16,7 +16,6 @@ def assign_value_by_path(d, path, value):
     except:
         current[path[-1]] = value
 
-
 with open('config\overture_categories.csv', newline='') as csvfile:
     reader = csv.DictReader(csvfile)
     cats={}
@@ -25,9 +24,7 @@ with open('config\overture_categories.csv', newline='') as csvfile:
         if len(path) == 1:
             cats[path[0]]={}
             continue
-
         assign_value_by_path(cats, path, {path[-1]:{}})
-
 
     with open("categories.json","w+") as j:
         json.dump(cats, j)
