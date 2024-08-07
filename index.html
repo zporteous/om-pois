@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="https://js.arcgis.com/4.30/esri/themes/light/main.css" />
         <script src="https://js.arcgis.com/4.30/"></script>
         <!-- Custom JS -->
-        <script src="/js/map.js"></script>
+        <script data-main="js/config" src="js/require.js"></script>
         <!-- Styles -->
         <link rel="stylesheet" type="text/css" href="/css/main.css" />
     </head>
@@ -60,49 +60,12 @@
                                     
                                 </calcite-tab>
                                 <calcite-tab>
-                                    <calcite-tree selection-mode="ancestors">
-                                        <calcite-tree-item>East Coast</calcite-tree-item>
-                                        <calcite-tree-item>
-                                            Midwest
-                                            <calcite-tree slot="children">
-                                                <calcite-tree-item>Great Lakes</calcite-tree-item>
-                                                <calcite-tree-item>Northwoods</calcite-tree-item>
-                                            </calcite-tree>
-                                        </calcite-tree-item>
-                                        <calcite-tree-item>
-                                            West Coast
-                                            <calcite-tree slot="children">
-                                                <calcite-tree-item>
-                                                    California
-                                                    <calcite-tree slot="children">
-                                                        <calcite-tree-item>Bay Area</calcite-tree-item>
-                                                        <calcite-tree-item>Central Valley</calcite-tree-item>
-                                                        <calcite-tree-item>Inland Empire</calcite-tree-item>
-                                                        <calcite-tree-item>Trinity Alps</calcite-tree-item>
-                                                    </calcite-tree>
-                                                </calcite-tree-item>
-                                                <calcite-tree-item>
-                                                    Pacific Northwest
-                                                    <calcite-tree slot="children">
-                                                        <calcite-tree-item>Oregon</calcite-tree-item>
-                                                        <calcite-tree-item>
-                                                            Washington
-                                                            <calcite-tree slot="children">
-                                                                <calcite-tree-item>Coastal</calcite-tree-item>
-                                                                <calcite-tree-item>
-                                                                    Inland
-                                                                    <calcite-tree slot="children">
-                                                                        <calcite-tree-item>Mount St. Helens</calcite-tree-item>
-                                                                        <calcite-tree-item>The Enchantments</calcite-tree-item>
-                                                                    </calcite-tree>
-                                                                </calcite-tree-item>
-                                                            </calcite-tree>
-                                                        </calcite-tree-item>
-                                                    </calcite-tree>
-                                                </calcite-tree-item>
-                                            </calcite-tree>
-                                        </calcite-tree-item>
-                                    </calcite-tree>
+                                    <div id="tree-header">
+
+                                    </div>
+                                    <div id="tree-container">
+
+                                    </div>
                                 </calcite-tab>
                                 <calcite-tab>
                                     

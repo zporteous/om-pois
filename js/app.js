@@ -3,17 +3,16 @@ require([
   "esri/Map",
   "esri/layers/GraphicsLayer",
   "esri/views/MapView",
-  "esri/identity/OAuthInfo", 
-  "esri/identity/IdentityManager",
-  "esri/portal/PortalQueryParams",
-  "esri/portal/Portal",
   "esri/request",
   "esri/Graphic",
   "esri/layers/support/Field",
   "esri/layers/FeatureLayer",
+  "utils",
 ], (Sketch, Map, GraphicsLayer, MapView, 
-  request, Graphic, Field, FeatureLayer) => {
-    // BEGIN MAP 
+  request, Graphic, Field, FeatureLayer, utils) => {
+
+utils.renderCategories()
+
 const graphicsLayer = new GraphicsLayer();
 
 const map = new Map({
@@ -30,6 +29,9 @@ const view = new MapView({
 });
 
 view.when(() => {
+  var treeContainer = document.getElementById("tree-container")
+  renderCategories(treeContainer)
+
   // make sketch widget, add to map
   const sketch = new Sketch({
     layer: graphicsLayer,
