@@ -14,11 +14,28 @@
         <link rel="stylesheet" href="https://js.arcgis.com/4.30/esri/themes/light/main.css" />
         <script src="https://js.arcgis.com/4.30/"></script>
         <!-- Custom JS -->
-        <script data-main="js/app" src="js/require.js"></script>
+        <script src="js/app.js"></script>
+        
         <!-- Styles -->
         <link rel="stylesheet" type="text/css" href="/css/main.css" />
     </head>
     <body>
+        <script>
+            var locationPath = location.pathname.replace(/\/[^\/]+$/, "");
+            console.log(locationPath)
+            window.dojoConfig = {
+            packages: [
+                {
+                    name: "utils",
+                    location: locationPath + "js/utils"
+                },
+                {
+                    name: "categories",
+                    location: locationPath + "../config/categories.json"
+                }
+            ]
+            };
+        </script>
         <div class="body-container">
             <div>
                 <div class="sidebar">

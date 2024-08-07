@@ -1,11 +1,3 @@
-requirejs.config({
-  baseUrl: 'js',
-  paths: {
-      'esri': 'https://js.arcgis.com/4.30/esri',
-      'utils': 'utils',
-      'categories':"../config/categories.json"
-  }
-});
 
 require([
   "esri/widgets/Sketch",
@@ -17,9 +9,9 @@ require([
   "esri/layers/support/Field",
   "esri/layers/FeatureLayer",
   "utils",
+  "categories",
 ], (Sketch, Map, GraphicsLayer, MapView, 
   request, Graphic, Field, FeatureLayer, utils, categories) => {
-
 
 
 const graphicsLayer = new GraphicsLayer();
@@ -39,7 +31,7 @@ const view = new MapView({
 
 view.when(() => {
   var treeContainer = document.getElementById("tree-container")
-  utils.renderCategories(treeContainer)
+  utils.renderCategories(categories,treeContainer)
 
   // make sketch widget, add to map
   const sketch = new Sketch({
