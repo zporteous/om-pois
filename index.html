@@ -1,100 +1,74 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-        <!-- Calcite -->
-        <script type="module"  src="https://js.arcgis.com/calcite-components/2.8.5/calcite.esm.js"></script>
-        <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/2.8.5/calcite.css" />
-        <!-- JS API -->
-        <link rel="stylesheet" href="https://js.arcgis.com/4.30/esri/themes/light/main.css" />
-        <script src="https://js.arcgis.com/4.30/"></script>
-        <!-- Custom JS -->
-        <script src="js/app.js"></script>
-        
-        <!-- Styles -->
-        <link rel="stylesheet" type="text/css" href="/css/main.css" />
-    </head>
-    <body>
-        <script>
-            var locationPath = location.pathname.replace(/\/[^\/]+$/, "");
-            console.log(locationPath)
-            window.dojoConfig = {
-            packages: [
-                {
-                    name: "utils",
-                    location: locationPath + "js/utils"
-                },
-                {
-                    name: "categories",
-                    location: locationPath + "../config/categories.json"
-                }
-            ]
-            };
-        </script>
-        <div class="body-container">
-            <div>
-                <div class="sidebar">
-                    <div id="sidebar" >
-                        <div id="sidebar-content" >
-                            <h4>Overture Maps POIs</h4>
-                            <p>One stop shop for quick and easy access to POIs from OVerture Maps</p>
-                            <calcite-tabs>
-                                <calcite-tab-nav slot="title-group">
-                                    <calcite-tab-title selected>
-                                        Define Spatial Area
-                                    </calcite-tab-title>
-                                    <calcite-tab-title>Select Categories</calcite-tab-title>
-                                    <calcite-tab-title>Send Request</calcite-tab-title>
-                                </calcite-tab-nav>
-                                <calcite-tab selected>
-                                    <div class="tab-content">
-                                        <div>
-                                            <calcite-radio-button-group id="draw-or-upload" appearance="outline" layout="horizontal">
-                                            <calcite-label layout="inline">
-                                                <calcite-radio-button value="draw" checked></calcite-radio-button>Draw an AOI
-                                            </calcite-label>
-                                            <calcite-label layout="inline">
-                                                <calcite-radio-button value="upload"></calcite-radio-button>Upload Polygon Shapefile
-                                            </calcite-label>
-                                            </calcite-radio-button-group>
-                                        </div>
-                                        <div id="upload-ui">
-                                            <calcite-label> Upload a polygon shapefile
-                                              <form enctype="multipart/form-data" method="post" id="upload-shp">
-                                                <div class="field">
-                                                  <input disabled id="inFile" name="file" type="file"/>
-                                                </div>
-                                              </form>
-                                            </calcite-label>
-                                            <calcite-label id="upload-status"></calcite-label>
-                                        </div>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module"  src="https://js.arcgis.com/calcite-components/2.8.5/calcite.esm.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/2.8.5/calcite.css" />
+    <title>Get Pois</title>
+  </head>
+  <body>
+    <div class="body-container">
+        <div>
+            <div class="sidebar">
+                <div id="sidebar" >
+                    <div id="sidebar-content" >
+                        <h4>Overture Maps POIs</h4>
+                        <p>One stop shop for quick and easy access to POIs from Overture Maps</p>
+                        <calcite-tabs>
+                            <calcite-tab-nav slot="title-group">
+                                <calcite-tab-title selected>
+                                    Define Spatial Area
+                                </calcite-tab-title>
+                                <calcite-tab-title>Select Categories</calcite-tab-title>
+                                <calcite-tab-title>Send Request</calcite-tab-title>
+                            </calcite-tab-nav>
+                            <calcite-tab selected>
+                                <div class="tab-content">
+                                    <div>
+                                        <calcite-radio-button-group id="draw-or-upload" appearance="outline" layout="horizontal">
+                                        <calcite-label layout="inline">
+                                            <calcite-radio-button value="draw" checked></calcite-radio-button>Draw an AOI
+                                        </calcite-label>
+                                        <calcite-label layout="inline">
+                                            <calcite-radio-button value="upload"></calcite-radio-button>Upload Polygon Shapefile
+                                        </calcite-label>
+                                        </calcite-radio-button-group>
                                     </div>
-                                    
-                                </calcite-tab>
-                                <calcite-tab>
-                                    <div id="tree-header">
+                                    <div id="upload-ui">
+                                        <calcite-label> Upload a polygon shapefile
+                                          <form enctype="multipart/form-data" method="post" id="upload-shp">
+                                            <div class="field">
+                                              <input disabled id="inFile" name="file" type="file"/>
+                                            </div>
+                                          </form>
+                                        </calcite-label>
+                                        <calcite-label id="upload-status"></calcite-label>
+                                    </div>
+                                </div>
+                                
+                            </calcite-tab>
+                            <calcite-tab>
+                                <div id="tree-header">
 
-                                    </div>
-                                    <div id="tree-container">
+                                </div>
+                                <div id="tree-container">
 
-                                    </div>
-                                </calcite-tab>
-                                <calcite-tab>
-                                    
-                                </calcite-tab>
-                            </calcite-tabs>
-                        </div>
+                                </div>
+                            </calcite-tab>
+                            <calcite-tab>
+                                
+                            </calcite-tab>
+                        </calcite-tabs>
                     </div>
                 </div>
             </div>
-            <div>
-                <div id="viewDiv"></div>
-            </div>
         </div>
-    </body>
+        <div>
+            <div id="viewDiv"></div>
+        </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>
