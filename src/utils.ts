@@ -9,6 +9,7 @@ export function createTrees(obj: NestedObject, trunk:HTMLElement): void {
   if (obj == undefined) {
     return 
   } else{
+    // current level of iteration
     let i =0;
     const currentLevels=Object.keys(obj)
     while (i<currentLevels.length) {
